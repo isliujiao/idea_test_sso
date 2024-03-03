@@ -1,0 +1,7 @@
+1、当访问信息页面时首先判断是否登录、是否携带token信息：
+    client：session.getAttribute("loginUser");
+如果没登录，则跳转到server：login,如果cookie信息正确说明同系统下登录过，直接返回原页面
+2、没用cookie信息，进行登录表单操作doLogin(),校验信息是否正确，
+无误后创建一个唯一标识存入redis、cookie中，跳回原页面
+3、此时已经携带token信息和用户信息
+4、由于已经向浏览器存入cookie信息，所以同系统其他页面再次访问无需登录
